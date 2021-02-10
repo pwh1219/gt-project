@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisKey {
     // 系统中redis的key命名进行设计
-
+    public static final String SYSTEM_PARAM = "SYS_PARAM";
     // key前缀的命名
 
     // cookie key
