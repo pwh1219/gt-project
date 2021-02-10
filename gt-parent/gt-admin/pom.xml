@@ -23,11 +23,12 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.gt</groupId>
-            <artifactId>gt-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gt</groupId>-->
+<!--            <artifactId>gt-common</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
         <!--    通用mapper    -->
 <!--        <dependency>-->
 <!--            <groupId>com.github.abel533</groupId>-->
@@ -41,10 +42,10 @@
             <version>2.0.2</version>
         </dependency>
         <!--    redis    -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--        </dependency>-->
         <!--支持热部署依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -149,6 +150,12 @@
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jsp-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gt</groupId>
+            <artifactId>gt-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

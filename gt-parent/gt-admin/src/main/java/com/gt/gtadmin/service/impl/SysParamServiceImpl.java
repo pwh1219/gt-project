@@ -3,6 +3,7 @@ package com.gt.gtadmin.service.impl;
 import com.gt.gtadmin.bean.SysParam;
 import com.gt.gtadmin.mapper.SysParamMapper;
 import com.gt.gtadmin.service.SysParamService;
+import com.gt.gtcommon.util.RedisKey;
 import com.gt.gtcommon.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class SysParamServiceImpl implements SysParamService {
 
     @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private RedisKey redisKey;
 
     @Override
     public void loadSysParam() {

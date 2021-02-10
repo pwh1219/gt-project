@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @Date 2021/2/8 14:17
  */
 @Component
-@ComponentScan(basePackages = {"com.gt.gtcommon.util"})
+@ComponentScan(basePackages = "com.gt.gtcommon.util")
 public class RedisUtils {
 
     @Autowired
