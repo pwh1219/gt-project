@@ -2,6 +2,7 @@ package com.gt.gtcommon.util;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @Date 2021/2/8 14:17
  */
 @Component
+@ComponentScan(basePackages = {"com.gt.gtcommon.util"})
 public class RedisUtils {
 
     @Autowired
@@ -22,7 +24,6 @@ public class RedisUtils {
      */
     public void set(String key, String value) throws Exception {
         // 通过ValueOperations对象操作
-        System.out.println("hello");
         stringRedisTemplate.opsForValue().set(key, value);
     }
 

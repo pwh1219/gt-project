@@ -12,14 +12,12 @@
 </head>
 <%@include file="common/common.jsp" %>
 <script type="text/javascript" src="${proPath}/js/login.js"></script>
-<%--<link type="text/css" rel="stylesheet" href="${proPath}/css/login.css"/>--%>
-
 <style type="text/css">
     #bg {
         margin: 0px;
         padding: 0px;
-        background: url('/img/bg.jpg');
-        background-size: 1300px;
+        background: url('/img/gt-back.jpg');
+        background-size: 1700px;
         width: 1688px;
         height: 800px;
         overflow-y: hidden;
@@ -30,7 +28,7 @@
         padding: 0px;
         margin: 0px;
         width: 100%;
-        height: 10%;
+        height: 15%;
     }
 
     #dd2 {
@@ -40,27 +38,12 @@
         height: 63%;
     }
 
-    #dd3 {
-        padding: 0px;
-        margin: 0px;
-        width: 100%;
-        height: 10%;
-    }
-
     #t1 {
         font-family: 宋体;
         font-size: 50px;
-        padding-left: 32%;
-        padding-top: 24px;
+        padding-left: 35%;
+        padding-top: 5%;
         color: #8F5700;
-    }
-
-    #t3 {
-        height: 95%;
-        padding-left: 300px;
-        padding-top: 24px;
-        font-size: 30px;
-        font-family: 微软雅黑;
     }
 
     #s1 {
@@ -77,14 +60,14 @@
     #win_body{
         padding-bottom: 100px;
         padding-left: 480px;
-        padding-top: 40px;
+        padding-top: 4%;
     }
 
 </style>
 <body id="bg">
 
 <div id="dd1">
-    <div id="t1">软拓点餐后台管理系统</div>
+    <div id="t1">高铁后台管理系统</div>
 </div>
 
 <div id="dd2">
@@ -116,12 +99,6 @@
                 <a id="btn2" href="#" class="easyui-linkbutton" onclick="resetForm()">重&nbsp;&nbsp;置</a>
             </form>
         </div>
-    </div>
-</div>
-
-<div id="dd3">
-    <div id="t3">
-        <span>版权所有 CopyRight &nbsp &copy xxx公司 | 地址：xxx |&nbsp;&nbsp邮编：xxx |&nbsp;&nbsp;反馈意见：xxx</span>
     </div>
 </div>
 </body>
