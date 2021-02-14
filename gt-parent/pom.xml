@@ -13,12 +13,13 @@
     <properties>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-        <pagehelper.version>3.4.2</pagehelper.version>
+        <pagehelper.version>5.1.4</pagehelper.version>
+        <pagehelper.boot.version>1.2.5</pagehelper.boot.version>
         <jsqlparser.version>0.9.1</jsqlparser.version>
         <mysql.version>5.1.38</mysql.version>
         <fastjson.version>1.2.72</fastjson.version>
         <commons-io.version>2.6</commons-io.version>
-        <mybatis.version>3.4.6</mybatis.version>
+        <mybatis.version>3.5.5</mybatis.version>
         <mybatis.spring.version>2.1.4</mybatis.spring.version>
         <quartz.version>2.2.2</quartz.version>
         <druid.version>1.1.20</druid.version>
@@ -181,6 +182,13 @@
                 <artifactId>pagehelper</artifactId>
                 <version>${pagehelper.version}</version>
             </dependency>
+            <!-- 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.github.jsqlparser</groupId>
                 <artifactId>jsqlparser</artifactId>
