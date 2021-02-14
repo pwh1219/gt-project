@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.crew.mapper.TrainNumMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gt.crew.dto.TrainNum">
+        <id column="train_id" property="trainId" />
+        <result column="railways" property="railways" />
+        <result column="kyd" property="kyd" />
+        <result column="filiale" property="filiale" />
+        <result column="train_num" property="trainNum" />
+        <result column="train_type" property="trainType" />
+        <result column="starting_ads" property="startingAds" />
+        <result column="ending_ads" property="endingAds" />
+        <result column="starting_time" property="startingTime" />
+        <result column="ending_time" property="endingTime" />
+        <result column="interval_day" property="intervalDay" />
+        <result column="after_time" property="afterTime" />
+        <result column="is_stop" property="isStop" />
+        <result column="is_able" property="isAble" />
+        <result column="remark" property="remark" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        train_id, railways, kyd, filiale, train_num, train_type, starting_ads, ending_ads, starting_time, ending_time, interval_day, after_time, is_stop, is_able, remark, is_del
+    </sql>
+
+</mapper>

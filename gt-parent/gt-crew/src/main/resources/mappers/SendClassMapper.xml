@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.crew.mapper.SendClassMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gt.crew.dto.SendClass">
+        <id column="class_id" property="classId" />
+        <result column="railways" property="railways" />
+        <result column="kyd" property="kyd" />
+        <result column="filiale" property="filiale" />
+        <result column="ride_date" property="rideDate" />
+        <result column="pay_id" property="payId" />
+        <result column="pay_name" property="payName" />
+        <result column="team_id" property="teamId" />
+        <result column="team_num" property="teamNum" />
+        <result column="pay_type" property="payType" />
+        <result column="ride_man" property="rideMan" />
+        <result column="is_stop" property="isStop" />
+        <result column="remark" property="remark" />
+        <result column="front_man" property="frontMan" />
+        <result column="back_man" property="backMan" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        class_id, railways, kyd, filiale, ride_date, pay_id, pay_name, team_id, team_num, pay_type, ride_man, is_stop, remark, front_man, back_man
+    </sql>
+
+</mapper>

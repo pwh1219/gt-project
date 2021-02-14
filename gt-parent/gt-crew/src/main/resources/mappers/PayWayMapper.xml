@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.crew.mapper.PayWayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gt.crew.dto.PayWay">
+        <id column="pay_id" property="payId" />
+        <result column="railways" property="railways" />
+        <result column="kyd" property="kyd" />
+        <result column="filiale" property="filiale" />
+        <result column="train_type" property="trainType" />
+        <result column="pay_name" property="payName" />
+        <result column="train_num" property="trainNum" />
+        <result column="starting_ads" property="startingAds" />
+        <result column="ending_ads" property="endingAds" />
+        <result column="starting_time" property="startingTime" />
+        <result column="ending_time" property="endingTime" />
+        <result column="interval_day" property="intervalDay" />
+        <result column="is_stop" property="isStop" />
+        <result column="remark" property="remark" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        pay_id, railways, kyd, filiale, train_type, pay_name, train_num, starting_ads, ending_ads, starting_time, ending_time, interval_day, is_stop, remark, is_del
+    </sql>
+
+</mapper>
