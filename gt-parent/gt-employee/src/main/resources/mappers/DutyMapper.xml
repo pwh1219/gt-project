@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.employee.mapper.DutyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gt.employee.dto.Duty">
+        <id column="duty_tag" property="dutyTag" />
+        <result column="duty_name" property="dutyName" />
+        <result column="is_able" property="isAble" />
+        <result column="duty_ctime" property="dutyCtime" />
+        <result column="duty_utime" property="dutyUtime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        duty_tag, duty_name, is_able, duty_ctime, duty_utime
+    </sql>
+
+</mapper>

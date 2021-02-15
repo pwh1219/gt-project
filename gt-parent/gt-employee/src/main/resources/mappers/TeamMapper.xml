@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.employee.mapper.TeamMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gt.employee.dto.Team">
+        <id column="team_id" property="teamId" />
+        <result column="team_name" property="teamName" />
+        <result column="railways" property="railways" />
+        <result column="kyd" property="kyd" />
+        <result column="filiale" property="filiale" />
+        <result column="team_num" property="teamNum" />
+        <result column="team_type" property="teamType" />
+        <result column="team_leader" property="teamLeader" />
+        <result column="team_member" property="teamMember" />
+        <result column="is_able" property="isAble" />
+        <result column="is_rb" property="isRb" />
+        <result column="remark" property="remark" />
+        <result column="train_type" property="trainType" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        team_id, team_name, railways, kyd, filiale, team_num, team_type, team_leader, team_member, is_able, is_rb, remark, train_type, is_del
+    </sql>
+
+</mapper>
