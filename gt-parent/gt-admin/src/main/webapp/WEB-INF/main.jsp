@@ -7,8 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/common.jsp" %>
-
-
 <script type="text/javascript" src="${proPath}/js/main.js"></script>
 <link type="text/css" rel="stylesheet" href="${proPath}/css/main.css">
 <html>
@@ -16,20 +14,6 @@
     <title>Title</title>
 </head>
 <script>
-    /* $(function () {
-         $.ajax({
-             url: '${proPath}/directory/selectDirect.mvc',
-            success: function (directories) {
-                $.each(directories, function (i, d) {
-                    $('#aa').accordion({
-                        animate: false
-                    });
-                })
-            },
-        })
-    });
-*/
-
     function updatepwd(url) {
         $('#win').window({
             collapsible: false,
@@ -46,54 +30,43 @@
     function logout() {
         $.messager.confirm('系统提示', '您确认要退出系统吗？', function (r) {
             if (r) {
-                window.location = "${proPath}/emp/logout.mvc";
-                <%--url:'${proPath}/emp'--%>
-                <%--     异步方法不能返回同步页面
-                    $.ajax({
-                                   url:'${proPath}/emp/logout.mvc',
-                                    type:'post'
-                           })
-                --%>
+                window.location = "${proPath}/user/logout";
             }
         });
     }
 
-    /*    history.pushState(null, null, "${proPath}/login.jsp");
-    window.addEventListener('popstate', function () {
-        history.pushState(null, null, "${proPath}/login.jsp");
-    });*/
-
     $(function () {
         $.ajax({
-            url: '${proPath}/directory/selectDirect.mvc',
+            url: '${proPath}/authority/selectAuthority',
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    var directory = data[i];
-                    if (directory.directId === 1) {
+                    var authority = data[i];
+                    if (authority.authorityId === 1) {
                         $('#aa').accordion('add', {
-                            title: directory.directName,
+                            title: authority.authorityName,
                             selected: true,
-                            id: directory.directId
+                            id: authority.authorityId
                         });
                     } else {
                         $('#aa').accordion('add', {
-                            title: directory.directName,
+                            title: authority.authorityName,
                             selected: false,
-                            id: directory.directId
+                            id:authority.authorityId
                         });
                     }
 
-                    $('#' + directory.directId + '').tree({
-                            data: directory.children,
+                    $('#' + authority.authorityId + '').tree({
+                            data: authority.children,
                             onClick: function (node) {
                                 $('#tt').tabs('add', {
-                                    title: node.directName,
-                                    content: '<iframe src="${proPath}' + node.directUrl + '.mvc" title="'+node.directName+'" width="100%" height="100%" frameborder="0px"></iframe>',
+                                    title: node.authorityName,
+                                    content: '<iframe src="${proPath}' + node.authorityUrl + '.mvc" title="' + node.authorityName + '" width="100%" height="100%" frameborder="0px"></iframe>',
                                     border: false,
                                     closable: true,
                                     tools: [{
                                         iconCls: 'icon-mini-refresh',
-                                        handler: function () {}
+                                        handler: function () {
+                                        }
                                     }]
                                 })
                             }
@@ -121,37 +94,47 @@
 <body>
 <div id="cc" class="easyui-layout" data-options="fit:true" style="width:600px;height:400px;">
     <div data-options="region:'north',title:'',split:false,collapsible:false"
-         style="height:50px;background-color: #eeb882">
-        <img id="img1" src="${proPath}/img/dc.jpg" alt="图片丢失">
-        <div style="display:inline-block;"><span style="font-size:26px;color: #8F5700;padding-left: 5px">
-            软拓点餐后台管理系统</span>
+         style="height:36px;">
+
+        <div style="float: left">
+            <img id="img1" src="${proPath}/img/dc.jpg" alt="图片丢失">
         </div>
-        <div style="float: right">
+
+        <div style="float: left;padding-top: 3px;padding-left: 2px">
+            <span style="font-size:20px;padding-left: 5px">高吧后台管理系统</span>
+        </div>
+
+        <div style="float: right;padding-top: 5px">
             <span style="font-size: 20px;">欢迎您：</span>
-            <span id="span2" style="color: red;font-size: 30px;">${sessionScope.login.empName}</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span style="font-size: 30px"><a href="#" onclick="updatepwd('${proPath}/base/goURL/emp/updatepwd.mvc')"
-                                             style="color: grey">修改密码</a>  </span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span style="font-size: 30px"><a href="#" onclick="logout()" style="color: #ee1e34">退出系统</a>  </span>
+            <span id="span2" style="font-size: 20px;">
+                ${sessionScope.login.userName}
+            </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-size: 20px">
+                <a href="#" onclick="updatepwd('${proPath}/base/goURL/emp/updatepwd')">修改密码</a>
+            </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="font-size: 20px">
+                <a href="#" onclick="logout()">退出系统</a>
+            </span>
+            &nbsp;&nbsp;
         </div>
     </div>
 
     <div id="rr" data-options="region:'south',title:'',split:false,collapsible:false"
-         style="height:41px;text-align: center;background-color: #8f8d91">
+         style="height:41px;text-align: center;">
         <span style="font-size: 30px;font-family: 华文楷体;">系统版本号：v1.0.1 &nbsp;&nbsp;发布时间：2020 年  12 月 25 日</span>
     </div>
 
     <div data-options="region:'west',title:'导航菜单',split:true" style="width:240px;">
-        <div id="aa" class="easyui-accordion" data-options="fit:true" style="background-color: #eeede0">
+        <div id="aa" class="easyui-accordion" data-options="fit:true">
         </div>
     </div>
 
-    <div id="ta1" data-options="region:'center',title:'',split:false" style="background:#eee;">
+    <div id="ta1" data-options="region:'center',title:'',split:false">
         <div id="tt" class="easyui-tabs" data-options="fit:true">
-            <div data-options="closable:true" title="欢迎使用">
-                <div>
-                    <img src="${proPath}/img/bodybg.jpg" alt="图片丢失" style="width:1293px;height: 609px">
+            <div data-options="closable:true" title="欢迎使用"  style="background-image:url('/img/gt-back.jpg');background-size: 100%;">
+                <div style="background: image('${proPath}/img/gt-back')">
                 </div>
             </div>
         </div>

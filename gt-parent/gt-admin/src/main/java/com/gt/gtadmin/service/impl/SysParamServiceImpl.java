@@ -1,5 +1,7 @@
 package com.gt.gtadmin.service.impl;
 
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gt.gtadmin.bean.SysParam;
 import com.gt.gtadmin.mapper.SysParamMapper;
@@ -9,18 +11,24 @@ import com.gt.gtcommon.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * @Author Zz
- * @Date 2021/2/10 15:09
+ * <p>
+ * 系统参数表，用来存放放到内存中使用的常用参数 服务实现类
+ * </p>
+ *
+ * @author z
+ * @since 2021-02-16
  */
 @Service
-public class SysParamServiceImpl implements SysParamService {
-    @Autowired
+public class SysParamServiceImpl extends ServiceImpl<SysParamMapper, SysParam> implements SysParamService {
+
+    @Resource
     private SysParamMapper sysParamMapper;
 
     @Autowired
@@ -40,7 +48,7 @@ public class SysParamServiceImpl implements SysParamService {
             // 用来存放所有字段的数据
             Map<String, Object> sysParamMap = new HashMap<>();
             // 用来存放各个字段的数据
-            List<SysParam> sysParams = sysParamMapper.selectAll();
+            List<SysParam> sysParams = sysParamMapper.selectList(null);
             Map<String, String> filedMap = null;
             for (SysParam sysParam : sysParams) {
                 if ("2".equals(sysParam.getSysParamType())) {

@@ -1,33 +1,47 @@
 package com.gt.gtadmin.bean;
 
-import org.springframework.stereotype.Repository;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-
-@Repository
-@Table(name = "sys_param") //mybatis通用接口mapper依赖JPA实体类采用JPA
+/**
+ * <p>
+ * 系统参数表，用来存放放到内存中使用的常用参数
+ * </p>
+ *
+ * @author z
+ * @since 2021-02-16
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@ApiModel(value="SysParam对象", description="系统参数表，用来存放放到内存中使用的常用参数")
 public class SysParam implements Serializable {
 
-    // 主键 自动递增
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty(value = "系统参数编号，自增")
+    @TableId(value = "sys_param_id", type = IdType.AUTO)
     private Long sysParamId;
 
-    @Column(name = "sys_param_field")
+    @ApiModelProperty(value = "系统参数字段")
     private String sysParamField;
 
-    @Column(name = "sys_param_value")
+    @ApiModelProperty(value = "系统参数字段值")
     private String sysParamValue;
 
-    @Column(name = "sys_param_text")
+    @ApiModelProperty(value = "系统参数字段文本内容")
     private String sysParamText;
 
-    @Column(name = "sys_param_type")
+    @ApiModelProperty(value = "系统特殊属性标记，1表示正常存的数据,2表示存的一条sql")
     private String sysParamType;
+
 
     public Long getSysParamId() {
         return sysParamId;
@@ -67,16 +81,5 @@ public class SysParam implements Serializable {
 
     public void setSysParamType(String sysParamType) {
         this.sysParamType = sysParamType;
-    }
-
-    @Override
-    public String toString() {
-        return "SysParam{" +
-                "sysParamId=" + sysParamId +
-                ", sysParamField='" + sysParamField + '\'' +
-                ", sysParamValue='" + sysParamValue + '\'' +
-                ", sysParamText='" + sysParamText + '\'' +
-                ", sysParamType='" + sysParamType + '\'' +
-                '}';
     }
 }

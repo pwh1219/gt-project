@@ -1,11 +1,17 @@
 package com.gt.gtadmin.mapper;
 
-import com.gt.gtadmin.basemapper.IBaseDao;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gt.gtadmin.bean.SysParam;
 
 /**
- * @Author Zz
- * @Date 2021/2/10 15:06
+ * <p>
+ * 系统参数表，用来存放放到内存中使用的常用参数 Mapper 接口
+ * </p>
+ *
+ * @author z
+ * @since 2021-02-16
  */
-public interface SysParamMapper extends IBaseDao<SysParam> {
+public interface SysParamMapper extends BaseMapper<SysParam> {
+
 }

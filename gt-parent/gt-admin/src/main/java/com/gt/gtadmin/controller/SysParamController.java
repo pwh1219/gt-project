@@ -1,36 +1,21 @@
 package com.gt.gtadmin.controller;
 
 
-import com.gt.gtadmin.service.SysParamService;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.servlet.ServletContext;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Author Zz
- * @Date 2020/12/8 15:26
+ * <p>
+ * 系统参数表，用来存放放到内存中使用的常用参数 前端控制器
+ * </p>
+ *
+ * @author z
+ * @since 2021-02-16
  */
-@Controller
-@EnableAutoConfiguration
-@RequestMapping("/sysParam")
+@RestController
+@RequestMapping("/gt/sys-param")
 public class SysParamController {
 
-    @Resource
-    ServletContext application;
-
-    @Resource
-    private SysParamService sysParamService;
-
-    /**
-     * 表示在构造方法后面执行
-     */
-    @PostConstruct
-    public void loadSysParam() {
-        sysParamService.loadSysParam();
-    }
 }
 

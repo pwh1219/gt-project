@@ -1,24 +1,60 @@
 package com.gt.gtadmin.bean;
 
-public class GoodsInfo {
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 商品明细表
+ * </p>
+ *
+ * @author z
+ * @since 2021-02-16
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+@ApiModel(value="GoodsInfo对象", description="商品明细表")
+public class GoodsInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty(value = "商品主键")
+    @TableId(value = "goods_id", type = IdType.AUTO)
     private Integer goodsId;
 
+    @ApiModelProperty(value = "商品名称")
     private String goodsName;
 
+    @ApiModelProperty(value = "商品单位")
     private Double goodsUnits;
 
+    @ApiModelProperty(value = "商品数量")
     private Integer goodsAmount;
 
+    @ApiModelProperty(value = "出库价格")
     private Double goodsPrice;
 
+    @ApiModelProperty(value = "说明")
     private String remark;
 
+    @ApiModelProperty(value = "0表示未删除,1表示已删除")
     private String goodsDelete;
 
+    @ApiModelProperty(value = "商品编号")
     private Integer goodsIdentity;
 
+    @ApiModelProperty(value = "图片地址")
     private String goodsImage;
 
+    @ApiModelProperty(value = "商品类别")
     private String goodsType;
 
     public Integer getGoodsId() {

@@ -14,49 +14,47 @@
 </head>
 <script>
     function submitPwd() {
+        var isValid = $(this).form('validate');
+        if (isValid) {
+            var old = $("#oldPwd").val();
+            var new1 = $("#newPwd1").val();
+            var new2 = $("#newPwd2").val();
+
+            var oldPassword = (old == ${sessionScope.login.password});
+            var newPassword = (new1 === new2);
+
+            if (!oldPassword) {
+                $.messager.alert('提示信息', "原密码不正确！");
+                return;
+            }
+            if (!newPassword) {
+                $.messager.alert('提示信息', "输入的两次密码不一致！");
+                return;
+            }
+        }
         $("#ff").form('submit', {
-            url: '${proPath}/emp/updatePwd.mvc',
+            url: '${proPath}/user/updatePwd',
             onSubmit: function () {
-                var isValid = $(this).form('validate');
-                var old = $("#oldPwd").val();
-                var new1 = $("#newPwd1").val();
-                var new2 = $("#newPwd2").val();
 
-                if (isValid) {
-                    alert(old);
-                    var oldPassword = (old == ${applicationScope.login.empPassword});
-                    var newPassword = (new1 === new2);
-
-                    if (!oldPassword) {
-                        $.messager.alert('提示信息', "原密码不正确！");
-                        return;
-                    }
-                    if (!newPassword) {
-                        $.messager.alert('提示信息', "输入的两次密码不一致！");
-                        return;
-                    }
-                } else {
-                    $.messager.alert("提示信息", "请填写信息！");
-                    return;
-                }},
-            success: function (data) {
-
-                var data = eval('('+data+')');
-                alert(data.result);
-                if (data.result === "1") {
-                    $.messager.show({
+            },
+            success: function (result) {
+                var data = eval('(' + result + ')');
+                alert(data.msg);
+                if (data.msg == "1") {
+                    parent.$.messager.show({
                         title: "提示信息",
                         msg: '修改密码成功',
                         showSpeed: 1200,
                         timeout: 3000
                     });
-                    setTimeout(closeWindow,5000);
+                    setTimeout(closeWindow, 5000);
                 } else {
-                    $.messager.alert("提示信息", "修改密码失败！");
+                    parent.$.messager.alert("提示信息", "修改密码失败！");
                 }
-            },
-        });
-
+            }
+            ,
+        })
+        ;
     }
 
     function closeWindow() {
@@ -66,58 +64,69 @@
         parent.$('#dg').datagrid('load');
     }
 </script>
-<style>
-    span {
-        color: #0092DC;
-        font-size: 18px
-    }
-</style>
 <body>
 <form id="ff" method="post">
-    <input hidden="hidden" id="${applicationScope.login.empId}" style="display: none" name="empId" value="${applicationScope.login.empId}">
+    <input hidden="hidden" id="${sessionScope.login.userId}" style="display: none" name="userId"
+           value="${sessionScope.login.userId}">
     <div style="padding-top: 30px;padding-left: 140px;">
         <div>
             <span>用户姓名：</span>
-            <span><input type="text" value="${applicationScope.login.empName}" readonly="readonly"
-                         style="font-size: 20px;color: #8f3242"></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span>
+                <input type="text" name="userName" value="${sessionScope.login.userName}" readonly="readonly"
+                       style="width: 240px">
+            </span>
         </div>
 
         <div style="padding-top: 30px;">
             <span>用户账号：</span>
-            <span><input type="text" value="${applicationScope.login.empAccount}" readonly="readonly"
-                         style="font-size: 20px;color: #8f3242"></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span>
+                <input type="text" name="userCount" value="${sessionScope.login.userCount}" readonly="readonly"
+                       style="width: 240px">
+            </span>
         </div>
 
         <div style="padding-top: 30px;">
-            <span><label for="password1" id="password1">原密码：</label></span>
+            <span>
+                <label for="password1" id="password1">原密码：</label>
+            </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <span style="padding-left: 18px">
                 <input class="easyui-validatebox" type="password" name="oldPassword"
                        data-options="required:true,validType:'length[6,16]'" id="oldPwd"
-                       style="font-size: 20px;color: #8f3242" placeholder="请输入原密码"/>
-                </span>
+                       placeholder="请输入原密码" style="width: 240px"/>
+            </span>
         </div>
 
         <div style="padding-top: 30px;">
             <div>
-                <span><label for="password2" id="password2">新密码：</label></span>
+                <span>
+                    <label for="password2" id="password2">新密码：</label>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <span style="padding-left: 18px">
-                <input class="easyui-validatebox" type="password" name="newPassword"
+                <input class="easyui-validatebox" type="password"
                        data-options="required:true,validType:'length[6,16]'" id="newPwd1"
-                       style="font-size: 20px;color: #8f3242" placeholder="请输入新密码"/>
+                       placeholder="请输入新密码" style="width: 240px"/>
                 </span>
             </div>
 
             <div style="padding-top: 30px;">
-                <span><label for="empPassword" id="empPassword">确认密码：</label></span>
                 <span>
-                <input class="easyui-validatebox" type="password" name="empPassword" placeholder="请确认您输入的密码"
+                    <label for="empPassword" id="empPassword">确认密码：</label>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span>
+                <input class="easyui-validatebox" type="password" name="password" placeholder="请确认您输入的密码"
                        data-options="required:true,validType:'length[6,16]'" id="newPwd2"
-                       style="font-size: 20px;color: #8f3242"/>
+                       style="width: 240px"/>
                 </span>
             </div>
 
             <div style="padding-top: 40px;padding-left: 150px">
-                <input type="button" value="提交" onclick="submitPwd()" style="width: 80px;font-size: 20px">
+                <input type="button" value="提交" onclick="submitPwd()"
+                       style="width: 60px;font-size: 10px;background-color: #eeede0">
             </div>
         </div>
     </div>

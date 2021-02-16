@@ -1,0 +1,17 @@
+package com.gt.gtadmin.mapper;
+
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gt.gtadmin.bean.EnterInfo;
+
+/**
+ * <p>
+ * 商品入库关联表 Mapper 接口
+ * </p>
+ *
+ * @author z
+ * @since 2021-02-16
+ */
+public interface EnterInfoMapper extends BaseMapper<EnterInfo> {
+
+}
