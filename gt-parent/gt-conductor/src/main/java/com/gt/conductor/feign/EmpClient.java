@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by asus on 2021/2/18.
  */
-@FeignClient(name = "emp-client",url = "http://127.0.0.1:8090/")
+@FeignClient(name = "gt-employee")
 public interface EmpClient {
 
     @RequestMapping(value = "rideRecords",method = RequestMethod.GET)
