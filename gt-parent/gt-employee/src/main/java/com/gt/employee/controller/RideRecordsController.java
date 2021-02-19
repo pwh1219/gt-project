@@ -39,15 +39,15 @@ public class RideRecordsController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> getAllRecords(Integer page, Integer rows, Integer manId){
+    public List<RideRecords> getAllRecords(Integer page, Integer rows, Integer conductor){
         QueryWrapper<RideRecords> recordsQueryWrapper = new QueryWrapper<>();
-        recordsQueryWrapper.eq("conductor",manId);
+        recordsQueryWrapper.eq("conductor",conductor);
 
         List<RideRecords> list = rideRecordsService.list(recordsQueryWrapper);
         PageHelper.startPage(page,rows);
         PageInfo<RideRecords> pageInfo = new PageInfo<>(list);
-        Map<String,Object> pageMap = new HashMap<>();
-        return null;
+
+        return pageInfo.getList();
     }
 
     @RequestMapping(value = "/{opType}",method = RequestMethod.POST)
